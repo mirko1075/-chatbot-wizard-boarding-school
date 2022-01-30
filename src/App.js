@@ -32,43 +32,43 @@ function App() {
   useEffect(() => {
     const array = [];
     let k = 1;
-    const el0 = {
+    const step0 = {
       id: k,
       message: "Please reply to the following questions in order to be placed in the correct house",
       trigger: k + 1
     };
-    array.push(el0);
+    array.push(step0);
     k++;
     data.forEach(el => {
-      const el1 = {
+      const step1 = {
         id: k,
         message: el.title,
         trigger: k + 1
       };
       k++;
-      const el2 = {
+      const step2 = {
         id: k,
         options: el.answers.map(ans => {
           return { value: ans.title, label: ans.title, trigger: k+1};
         })
       };
       k++;
-      array.push(el1, el2);
+      array.push(step1, step2);
     });
-    const calculateEl = {
+    const calculateStep = {
       id: k,
       message: 'Calculating the house you belong.....',
       trigger: k+1,
     };
-    array.push(calculateEl);
+    array.push(calculateStep);
     k++;
-    const finalEl = {
+    const finalStep = {
       id: k,
       component: <ResultComponent  />,
       asMessage: true,
       end: true
     };
-    array.push(finalEl);
+    array.push(finalStep);
 
     setSteps([...array]);
     return () => timeout && clearTimeout(timeout);
