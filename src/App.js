@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import CustomChatbot from './components/chatBot'
 
 function App() {
+  const steps = [
+    {
+      id: "Greet",
+      message: "Hello, Welcome to our shop",
+      trigger: "Done"
+    },
+    {
+      id: "Done",
+      message: "Have a great day !!",
+      end: true
+    }
+ ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <CustomChatbot eventHandler={clickEventHandler} />
     </div>
   );
 }
